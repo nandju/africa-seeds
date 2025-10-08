@@ -4,6 +4,7 @@ import { Quote } from "lucide-react"
 import Image from "next/image"
 import { NumberTicker } from "@/components/magicui/number-ticker";
 
+
 const temoignages = [
   {
     name: "Awa Koné",
