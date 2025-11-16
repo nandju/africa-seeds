@@ -39,7 +39,6 @@ export default function RootLayout({
         <div className="font-poppins max-w-screen-2xl mx-auto ">
             <Navbar />
              {children}
-             <Footer />
         </div>
       </body>
     </html>

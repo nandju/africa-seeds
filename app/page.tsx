@@ -1,9 +1,7 @@
-import Header from "@/components/header"
-import MayorMessage from "@/components/mayor-message/mayor-message"
-import { Testimonials } from "@/components/testimonials/testimonials"
-import Services from "@/components/services/services"
-import News from "@/components/news/news"
-import HeroSection from "@/components/hero/hero-section"
+import HeroSection from "@/components/hero-section"
+import Header from "@/components/hero-section"
+import ProductsSection from "@/components/products/products-section"
+
 
 
 export default function Home() {
@@ -11,10 +9,7 @@ export default function Home() {
     <main className="min-h-screen bg-white">
       {/* <Header /> */}
       <HeroSection />
-      <MayorMessage />
-      <Services />
-      <News />
-      <Testimonials />
+      <ProductsSection />
     </main>
   )
 }

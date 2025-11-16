@@ -1,102 +1,149 @@
-"use client"
+'use client';
 
-import { useState } from "react"
-import Image from "next/image"
-import Link from "next/link"
-import { Menu, X, Bot } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { Menu, X } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Navbar() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen)
-  }
-
-  const links = [
-    { href: "/", label: "ACCUEIL" },
-    { href: "/conseil-municipal", label: "CONSEIL MUNICIPAL" },
-    { href: "/services", label: "SERVICES" },
-    { href: "/actualites", label: "ACTUALITÉS" },
-    { href: "/cultures", label: "CULTURES" },
-    { href: "/contact", label: "CONTACT" },
-  ]
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+    <>
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled
+            ? 'w-full rounded-none h-16'
+            : 'w-[90%] mx-auto rounded-full h-16 top-4'
+        } bg-white shadow-sm`}
+      >
+        <div className="h-full px-4 md:px-8 flex items-center justify-between">
           {/* Logo */}
-          <div className="flex-shrink-0">
-            <Link href="/">
-              <Image
-                src="/assets/images/logo.png"
-                alt="Logo Mairie"
-                width={150}
-                height={40}
-                className="h-8 w-auto"
-              />
-            </Link>
-          </div>
+          <Link href="/" className="flex items-center flex-shrink-0">
+            <Image
+              src="/assets/images/logo-africaseeds.png"
+              alt="AfricaSeeds Logo"
+              width={60}
+              height={60}
+              className="object-contain"
+            />
+          </Link>
 
-          {/* Desktop Navigation Menu */}
-          <div className="hidden lg:block">
-            <div className="ml-10 flex items-baseline space-x-8">
-              {links.map((link) => (
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center gap-8">
+            {['Accueil', 'À Propos', 'Notre Impact', 'Ressources', 'Blog'].map(
+              (item, idx) => (
                 <Link
-                  key={link.href}
-                  href={link.href}
-                  className="text-white hover:text-[#F77F00] px-3 py-2 text-sm font-medium transition-colors"
+                  key={idx}
+                  href="#"
+                  className="transition-colors"
+                  style={{ color: '#000000' }}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.color = '#8CC53E')
+                  }
+                  onMouseLeave={(e) =>
+                    (e.currentTarget.style.color = '#000000')
+                  }
                 >
-                  {link.label}
+                  {item}
                 </Link>
-              ))}
-            </div>
+              )
+            )}
           </div>
 
-          {/* Right side - Desktop */}
-          <div className="hidden lg:flex items-center space-x-4">
-            <Button
-              className="bg-[#009E60] hover:bg-[#007A4A] text-white font-semibold px-6 py-2 rounded-full transition-colors flex items-center gap-2"
-            >
-              <Bot className="h-4 w-4" />
-              CONSULTER IA
-            </Button>
-          </div>
+          {/* CTA Button - Desktop */}
+          <button
+            className="hidden lg:block px-6 py-2 rounded-full font-medium transition-all"
+            style={{ backgroundColor: '#BA8E3B', color: '#FFFFFF' }}
+            onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.9')}
+            onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
+          >
+            Contactez-nous
+          </button>
 
-          {/* Mobile menu button */}
-          <div className="lg:hidden flex items-center space-x-4">
-            <Button className="bg-[#009E60] hover:bg-[#007A4A] text-white font-semibold px-4 py-2 rounded-full transition-colors flex items-center gap-2 text-sm">
-              <Bot className="h-4 w-4" />
-              IA
-            </Button>
-            <button
-              onClick={toggleMobileMenu}
-              className="text-white hover:text-[#F77F00] transition-colors"
-            >
-              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
-          </div>
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsDrawerOpen(true)}
+            className="lg:hidden p-2 rounded-lg transition-colors"
+            style={{ color: '#000000' }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.backgroundColor = '#f3f4f6')
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.backgroundColor = 'transparent')
+            }
+          >
+            <Menu size={24} />
+          </button>
+        </div>
+      </nav>
+
+      {/* Drawer Overlay */}
+      {isDrawerOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-40 z-40 lg:hidden"
+          onClick={() => setIsDrawerOpen(false)}
+        ></div>
+      )}
+
+      {/* Drawer Panel */}
+      <div
+        className={`fixed top-0 right-0 h-screen w-72 bg-white z-50 p-6 shadow-xl transform transition-transform duration-300 lg:hidden ${
+          isDrawerOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}
+      >
+        <div className="flex justify-between items-center mb-8">
+          <h2 className="text-lg font-semibold" style={{ color: '#000000' }}>
+            Menu
+          </h2>
+          <button
+            onClick={() => setIsDrawerOpen(false)}
+            className="p-2 rounded-lg"
+          >
+            <X size={24} style={{ color: '#000000' }} />
+          </button>
+        </div>
+
+        {/* Drawer Navigation */}
+        <div className="flex flex-col gap-6">
+          {['Accueil', 'À Propos', 'Notre Impact', 'Ressources', 'Blog'].map(
+            (item, idx) => (
+              <Link
+                key={idx}
+                href="#"
+                className="text-base font-medium transition-colors"
+                style={{ color: '#000000' }}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.color = '#8CC53E')
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.color = '#000000')
+                }
+                onClick={() => setIsDrawerOpen(false)}
+              >
+                {item}
+              </Link>
+            )
+          )}
+
+          {/* CTA Button Mobile */}
+          <button
+            className="w-full mt-4 px-6 py-3 rounded-full font-medium transition-all"
+            style={{ backgroundColor: '#BA8E3B', color: '#FFFFFF' }}
+          >
+            Contactez-nous
+          </button>
         </div>
       </div>
-
-      {/* Mobile Navigation Menu */}
-      {isMobileMenuOpen && (
-        <div className="lg:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 bg-black/10 backdrop-blur-sm">
-            {links.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-white hover:text-[#F77F00] block px-3 py-2 text-base font-medium transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
-        </div>
-      )}
-    </nav>
-  )
+    </>
+  );
 }
