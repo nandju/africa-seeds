@@ -201,3 +201,119 @@ body {
   scroll-behavior: smooth;
 }
 }
+
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* added animations for floating images and scrolling background text */
+  
+  /* Background text continuous scroll animation */
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-scroll-left {
+    animation: scroll-left 30s linear infinite;
+  }
+
+
+
+  /* Floating animations for circular images */
+  @keyframes float-vertical-1 {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-30px);
+    }
+  }
+
+  @keyframes float-vertical-2 {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(25px);
+    }
+  }
+
+  @keyframes float-vertical-3 {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes float-horizontal-1 {
+    0%, 100% {
+      transform: translateX(0px);
+    }
+    50% {
+      transform: translateX(20px);
+    }
+  }
+
+  @keyframes float-horizontal-2 {
+    0%, 100% {
+      transform: translateX(0px);
+    }
+    50% {
+      transform: translateX(-25px);
+    }
+  }
+
+  @keyframes float-horizontal-3 {
+    0%, 100% {
+      transform: translateX(0px);
+    }
+    50% {
+      transform: translateX(15px);
+    }
+  }
+
+  .animate-float-vertical-1 {
+    animation: float-vertical-1 6s ease-in-out infinite;
+  }
+
+  .animate-float-vertical-2 {
+    animation: float-vertical-2 7s ease-in-out infinite;
+  }
+
+  .animate-float-vertical-3 {
+    animation: float-vertical-3 8s ease-in-out infinite;
+  }
+
+  .animate-float-horizontal-1 {
+    animation: float-horizontal-1 5s ease-in-out infinite;
+  }
+
+  .animate-float-horizontal-2 {
+    animation: float-horizontal-2 6.5s ease-in-out infinite;
+  }
+
+  .animate-float-horizontal-3 {
+    animation: float-horizontal-3 7.5s ease-in-out infinite;
+  }
+}
+
+  .loader-exit {
+    animation: loaderFadeOut 0.5s ease forwards;
+  }
+
+  @keyframes loaderFadeOut {
+    0% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(20px); }
+  }

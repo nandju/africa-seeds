@@ -23,6 +23,7 @@ export default function Loader({
   const [progress, setProgress] = useState(0);
   const [visible, setVisible] = useState(true);
   const [pulseScale, setPulseScale] = useState(1);
+  const [isFadingOut, setIsFadingOut] = useState(false);
 
   useEffect(() => {
     let raf: number | null = null;
@@ -119,10 +120,17 @@ export default function Loader({
     const forceTimeout = window.setTimeout(() => {
       if (!finished) {
         setProgress(100);
+
         setTimeout(() => {
-          setVisible(false);
-          clearInterval(pulseInterval);
-        }, 300);
+          setIsFadingOut(true); // on lance l'effet de sortie
+
+          setTimeout(() => {
+            setVisible(false);
+            if (raf) cancelAnimationFrame(raf);
+            clearInterval(pulseInterval);
+          }, 500); // durée de l’animation
+        }, 250);
+
       }
     }, maxWaitMs + 1000);
 
@@ -138,11 +146,12 @@ export default function Loader({
   return (
     <>
       <div
-      aria-hidden={!visible ? true : false}
-      role="status"
-      className="fixed inset-0 z-[9999] flex items-center justify-center bg-white"
-      style={{ backgroundColor: "#FFFFFF" }}
-    >
+        aria-hidden={!visible ? true : false}
+        role="status"
+        className={`fixed inset-0 z-[9999] flex items-center justify-center bg-white 
+          ${isFadingOut ? "loader-exit" : ""}`}
+        style={{ backgroundColor: "#FFFFFF" }}
+      >
         {/* Cercles décoratifs en arrière-plan */}
         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, overflow: 'hidden', pointerEvents: 'none' }}>
           <div 
