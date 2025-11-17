@@ -84,7 +84,7 @@ export default function ProductsSection() {
           
           <div className="absolute inset-0 flex items-center justify-center bg-black/30">
             <p className="text-3xl md:text-5xl font-light text-center px-6 text-balance" style={{ color: '#FFFFFF' }}>
-              And we are here to listen.
+              Et nous sommes là pour écouter.
             </p>
           </div>
 
@@ -148,7 +148,7 @@ export default function ProductsSection() {
                   </div>
                 ) : (
                   <>
-                    <span className="text-xl mr-2">{service.icon}</span>
+                    {/* <span className="text-xl mr-2">{service.icon}</span> */}
                     <span className="font-medium" style={{ color: '#000000' }}>{service.title}</span>
                   </>
                 )}
