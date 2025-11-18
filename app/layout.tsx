@@ -39,6 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Loader />
           <Navbar />
           {children}
+          <Footer />
         </div>
       </body>
     </html>
