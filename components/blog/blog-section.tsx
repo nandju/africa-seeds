@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 interface BlogCard {
   id: number;
@@ -31,6 +32,7 @@ const blogCards: BlogCard[] = [
 ];
 
 export default function BlogSection() {
+  const router = useRouter();
   return (
     <section className="w-full py-16 md:py-24" style={{ backgroundColor: '#FFFFFF' }}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -108,7 +110,7 @@ export default function BlogSection() {
                 </h3>
 
                 {/* Read More Button */}
-                <button 
+                <button onClick={() => router.push('/coming-soon')} 
                   className="w-fit rounded-full border-2 px-6 py-2 text-sm font-medium transition-all duration-300"
                   style={{ 
                     borderColor: 'rgba(140, 197, 62, 0.5)',
@@ -135,7 +137,7 @@ export default function BlogSection() {
 
         {/* View All Blogs Button */}
         <div className="flex justify-center">
-          <button 
+          <button onClick={() => router.push('/coming-soon')} 
             className="rounded-full px-8 py-3 text-base font-semibold transition-all duration-300"
             style={{ 
               backgroundColor: '#BA8E3B',

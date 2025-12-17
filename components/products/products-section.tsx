@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { Volume2, VolumeX } from 'lucide-react';
 
@@ -9,6 +10,7 @@ export default function ProductsSection() {
   const [isMuted, setIsMuted] = useState(true);
   const [hoveredService, setHoveredService] = useState<number | null>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const router = useRouter();
 
   const services = [
     { 
@@ -56,14 +58,14 @@ export default function ProductsSection() {
         {/* Header Section */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-12">
           <div className="flex flex-col gap-2">
-            <button className="w-fit px-4 py-2 border rounded-full text-sm font-medium transition-colors" style={{ borderColor: '#000000', color: '#000000' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f3f4f6'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}>
+            <button onClick={() => router.push('/coming-soon')} className="w-fit px-4 py-2 border rounded-full text-sm font-medium transition-colors" style={{ borderColor: '#000000', color: '#000000' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f3f4f6'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}>
               REGARDEZ CETTE VIDÉO
             </button>
             <h2 className="text-4xl md:text-5xl font-bold" style={{ color: '#000000' }}>
               Solutions Semencières
             </h2>
           </div>
-          <button className="w-fit px-6 py-3 rounded-full font-medium transition-opacity" style={{ backgroundColor: '#BA8E3B', color: '#FFFFFF' }} onMouseEnter={(e) => e.currentTarget.style.opacity = '0.9'} onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}>
+          <button onClick={() => router.push('/coming-soon')} className="w-fit px-6 py-3 rounded-full font-medium transition-opacity" style={{ backgroundColor: '#BA8E3B', color: '#FFFFFF' }} onMouseEnter={(e) => e.currentTarget.style.opacity = '0.9'} onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}>
             Trouvez des solutions dans votre pays
           </button>
         </div>
