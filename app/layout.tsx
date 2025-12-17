@@ -57,9 +57,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <div className="font-poppins max-w-screen-2xl mx-auto">
           {/* Loader */}  
         <Loader />
-          <Navbar />
+          {/* <Navbar /> */}
           {children}
-          <Footer />
+          {/* <Footer /> */}
         </div>
       </body>
     </html>
