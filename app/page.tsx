@@ -6,6 +6,7 @@ import Footer from "@/components/footer"
 import HeroSection from "@/components/hero-section"
 import Header from "@/components/hero-section"
 import Navbar from "@/components/navbar"
+import NewHeroSection from "@/components/new-hero-section/new-hero-section"
 import ProductsSection from "@/components/products/products-section"
 import TestimonialsSection from "@/components/testimonials/testimonials-section"
 import TrustedSolutionsSection from "@/components/trusted-solutions/trusted-solutions-section"
@@ -18,7 +19,8 @@ export default function Home() {
     <main className="min-h-screen bg-white">
       {/* <Header /> */}
       <Navbar />
-      <HeroSection />
+      {/* <HeroSection /> */}
+      <NewHeroSection />
       <ProductsSection />
       <BenefitsSection />
       <AboutSection />

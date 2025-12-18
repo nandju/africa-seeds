@@ -332,3 +332,17 @@ body {
 .hide-scrollbar::-webkit-scrollbar {
   display: none; /* Chrome / Safari */
 }
+
+/* pour la hero section */
+@keyframes scroll-seamless {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-seamless {
+  animation: scroll-seamless 35s linear infinite;
+}

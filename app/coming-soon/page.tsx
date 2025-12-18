@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { motion, useScroll, useSpring } from 'framer-motion'
+import { ChevronDown } from 'lucide-react'
 import Layout from './layout'
 import { sections } from '@/components/constants/sections'
 import Section from '@/components/Section'
@@ -10,6 +11,7 @@ import Section from '@/components/Section'
 
 export default function ComingSoonPage() {
   const [activeSection, setActiveSection] = useState(0)
+  const [showScrollIndicator, setShowScrollIndicator] = useState(true)
   const containerRef = useRef<HTMLDivElement | null>(null)
   const { scrollYProgress } = useScroll({ container: containerRef })
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 })
@@ -21,6 +23,11 @@ export default function ComingSoonPage() {
         const windowHeight = window.innerHeight
         const newActiveSection = Math.floor(scrollPosition / windowHeight)
         setActiveSection(newActiveSection)
+        
+        // Masquer l'indicateur après le premier scroll
+        if (scrollPosition > 50) {
+          setShowScrollIndicator(false)
+        }
       }
     }
 
@@ -86,12 +93,32 @@ export default function ComingSoonPage() {
         ))}
       </nav>
 
-      {/* Conteneur de défilement */}
-        <div
-          ref={containerRef}
-          className="h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth hide-scrollbar"
+      {/* Indicateur de scroll */}
+      {showScrollIndicator && (
+        <motion.div
+          className="fixed bottom-12 left-1/2 transform -translate-x-1/2 z-40"
+          animate={{ y: [0, 12, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          exit={{ opacity: 0 }}
         >
+          <div className="flex flex-col items-center gap-2">
+            <span className="text-xs font-semibold" style={{ color: '#8CC53E' }}>
+              Voir la suite
+            </span>
+            <ChevronDown 
+              size={20} 
+              style={{ color: '#8CC53E' }}
+              className="opacity-70 hover:opacity-100 transition-opacity"
+            />
+          </div>
+        </motion.div>
+      )}
 
+      {/* Conteneur de défilement */}
+      <div
+        ref={containerRef}
+        className="h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth hide-scrollbar"
+      >
         {sections.map((section, index) => (
           <Section
             key={section.id}

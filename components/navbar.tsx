@@ -72,14 +72,20 @@ export default function Navbar() {
 
   return (
     <>
-      <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
-            ? 'w-full rounded-none h-16'
-            : 'w-[90%] mx-auto rounded-full h-16 top-4'
-        } bg-white shadow-sm`}
-      >
-        <div className="h-full px-4 md:px-8 flex items-center justify-between">
+        <nav
+          className={`fixed top-0 left-0 right-0 z-50 h-16 transition-all duration-300
+            ${isScrolled
+              ? 'bg-white/80 backdrop-blur-md shadow-sm border-b border-gray-200'
+              : 'bg-white'
+            }
+          `}
+          style={{
+            WebkitBackdropFilter: isScrolled ? 'blur(12px)' : 'none',
+            backdropFilter: isScrolled ? 'blur(12px)' : 'none',
+          }}
+        >
+
+          <div className="max-w-7xl mx-auto h-full px-4 md:px-8 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center flex-shrink-0">
             <Image
