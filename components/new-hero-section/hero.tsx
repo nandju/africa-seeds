@@ -51,28 +51,29 @@ export function Hero() {
             </div>
 
             {/* Indicateurs */}
-            <div className="flex flex-wrap justify-center gap-6 text-sm">
-              <div className="flex items-center gap-2">
+            <div className="flex flex-wrap justify-center items-stretch gap-6 text-sm">
+              <div className="flex-1 sm:flex-auto flex items-center gap-2 min-w-[140px] justify-center">
                 <div className="p-2 rounded-full bg-[#8CC53E20]">
                   <Leaf size={16} color="#8CC53E" />
                 </div>
-                <span className="font-medium text-black">Agriculture durable</span>
+                <span className="font-medium text-black text-center">Agriculture durable</span>
               </div>
 
-              <div className="flex items-center gap-2">
+              <div className="flex-1 sm:flex-auto flex items-center gap-2 min-w-[140px] justify-center">
                 <div className="p-2 rounded-full bg-[#BA8E3B20]">
                   <Users size={16} color="#BA8E3B" />
                 </div>
-                <span className="font-medium text-black">Acteurs du secteur</span>
+                <span className="font-medium text-black text-center">Acteurs du secteur</span>
               </div>
 
-              <div className="flex items-center gap-2">
+              <div className="w-full flex items-center gap-2 justify-center mt-2 sm:mt-0">
                 <div className="p-2 rounded-full bg-[#8CC53E20]">
                   <Globe size={16} color="#8CC53E" />
                 </div>
-                <span className="font-medium text-black">Impact panafricain</span>
+                <span className="font-medium text-black text-center">Impact panafricain</span>
               </div>
             </div>
+
           </div>
 
           {/* Titre */}

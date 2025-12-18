@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useState, useEffect } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface Testimonial {
   id: number;
@@ -61,116 +61,72 @@ const testimonials: Testimonial[] = [
   },
 ];
 
+
 export default function TestimonialsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerView, setItemsPerView] = useState(3);
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 640) {
-        setItemsPerView(1);
-      } else if (window.innerWidth < 1024) {
-        setItemsPerView(2);
-      } else {
-        setItemsPerView(3);
-      }
+      if (window.innerWidth < 640) setItemsPerView(1);
+      else if (window.innerWidth < 1024) setItemsPerView(2);
+      else setItemsPerView(3);
     };
-
     handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const maxIndex = Math.max(0, testimonials.length - itemsPerView);
 
-  const handlePrev = () => {
-    setCurrentIndex(Math.max(0, currentIndex - 1));
-  };
-
-  const handleNext = () => {
-    setCurrentIndex(Math.min(maxIndex, currentIndex + 1));
-  };
+  const handlePrev = () => setCurrentIndex(Math.max(0, currentIndex - 1));
+  const handleNext = () => setCurrentIndex(Math.min(maxIndex, currentIndex + 1));
 
   return (
-    <section 
-      className="py-16 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8"
-      style={{ backgroundColor: '#FFFFFF' }}
-    >
+    <section className="w-full py-12 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="flex flex-col items-center gap-4 mb-12">
-          <button 
-            className="px-4 py-2 border rounded-full text-sm font-medium transition-colors"
-            style={{ 
-              borderColor: 'rgba(186, 142, 59, 0.5)',
-              color: '#BA8E3B',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = 'rgba(186, 142, 59, 0.1)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = 'transparent';
+        <div className="flex flex-col items-center gap-3 sm:gap-4 mb-8 sm:mb-12">
+          <button
+            className="px-3 sm:px-4 py-2 border rounded-full text-xs sm:text-sm font-medium transition-colors"
+            style={{
+              borderColor: "rgba(186,142,59,0.5)",
+              color: "#BA8E3B",
             }}
           >
             RETOURS CLIENTS
           </button>
-          <h2 
-            className="text-4xl md:text-5xl font-bold text-center leading-tight"
-            style={{ color: '#000000' }}
-          >
-            De vrais agriculteurs,<br />
-            De vraies réussites
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center leading-tight text-black">
+            De vrais agriculteurs,<br />De vraies réussites
           </h2>
         </div>
 
-        {/* Testimonials Carousel */}
-        <div className="relative">
-          <div className="overflow-hidden">
+        <div className="relative w-full">
+          {/* Carousel */}
+          <div className="overflow-hidden w-full">
             <div
-              className="flex gap-6 transition-transform duration-300 ease-out"
+              className="flex gap-4 sm:gap-6 transition-transform duration-300 ease-out"
               style={{
-                transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)`,
+                transform: `translateX(-${
+                  currentIndex * (100 / itemsPerView + 0.5)
+                }%)`,
               }}
             >
-              {testimonials.map((testimonial) => (
+              {testimonials.map((t) => (
                 <div
-                  key={testimonial.id}
+                  key={t.id}
                   className="flex-shrink-0"
-                  style={{ width: `${100 / itemsPerView}%` }}
+                  style={{ width: `calc(${100 / itemsPerView}% - 0.5rem)` }}
                 >
-                  <div 
-                    className="rounded-lg p-8 h-full flex flex-col justify-between transition-all duration-300"
-                    style={{ 
-                      background: 'linear-gradient(135deg, rgba(140, 197, 62, 0.08) 0%, rgba(186, 142, 59, 0.08) 100%)',
-                      border: '1px solid rgba(140, 197, 62, 0.2)',
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.boxShadow = '0 8px 30px rgba(140, 197, 62, 0.15)';
-                      e.currentTarget.style.transform = 'translateY(-4px)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.boxShadow = 'none';
-                      e.currentTarget.style.transform = 'translateY(0)';
-                    }}
-                  >
-                    <p 
-                      className="italic text-lg leading-relaxed mb-6"
-                      style={{ color: '#374151' }}
-                    >
-                      "{testimonial.quote}"
+                  <div className="rounded-lg p-4 sm:p-6 lg:p-8 h-full flex flex-col justify-between bg-gradient-to-br from-green-50 to-yellow-50 border border-green-200 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                    <p className="italic text-sm sm:text-base lg:text-lg leading-relaxed mb-4 sm:mb-6 text-gray-700">
+                      "{t.quote}"
                     </p>
                     <div>
-                      <p 
-                        className="font-semibold"
-                        style={{ color: '#000000' }}
-                      >
-                        — {testimonial.author}
+                      <p className="font-semibold text-sm sm:text-base text-black">
+                        — {t.author}
                       </p>
-                      <p 
-                        className="text-sm mt-1"
-                        style={{ color: '#6b7280' }}
-                      >
-                        Il y a {testimonial.daysAgo} jour{testimonial.daysAgo !== 1 ? 's' : ''}
+                      <p className="text-xs sm:text-sm mt-1 text-gray-500">
+                        Il y a {t.daysAgo} jour{t.daysAgo !== 1 ? "s" : ""}
                       </p>
                     </div>
                   </div>
@@ -183,70 +139,33 @@ export default function TestimonialsSection() {
           <button
             onClick={handlePrev}
             disabled={currentIndex === 0}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 md:translate-x-0 z-10 p-2 rounded-full border transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-            style={{
-              backgroundColor: '#FFFFFF',
-              borderColor: '#e5e7eb',
-            }}
-            onMouseEnter={(e) => {
-              if (currentIndex !== 0) {
-                e.currentTarget.style.backgroundColor = 'rgba(140, 197, 62, 0.1)';
-                e.currentTarget.style.borderColor = '#8CC53E';
-              }
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = '#FFFFFF';
-              e.currentTarget.style.borderColor = '#e5e7eb';
-            }}
-            aria-label="Témoignages précédents"
+            className="absolute top-1/2 -translate-y-1/2 z-10 p-2 rounded-full border bg-white transition-all disabled:opacity-30 disabled:cursor-not-allowed left-2 sm:left-0"
+            aria-label="Précédent"
           >
-            <ChevronLeft className="w-6 h-6" style={{ color: '#8CC53E' }} />
+            <ChevronLeft className="w-4 h-4 sm:w-6 sm:h-6 text-green-600" />
           </button>
           <button
             onClick={handleNext}
             disabled={currentIndex === maxIndex}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 md:translate-x-0 z-10 p-2 rounded-full border transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-            style={{
-              backgroundColor: '#FFFFFF',
-              borderColor: '#e5e7eb',
-            }}
-            onMouseEnter={(e) => {
-              if (currentIndex !== maxIndex) {
-                e.currentTarget.style.backgroundColor = 'rgba(140, 197, 62, 0.1)';
-                e.currentTarget.style.borderColor = '#8CC53E';
-              }
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = '#FFFFFF';
-              e.currentTarget.style.borderColor = '#e5e7eb';
-            }}
-            aria-label="Témoignages suivants"
+            className="absolute top-1/2 -translate-y-1/2 z-10 p-2 rounded-full border bg-white transition-all disabled:opacity-30 disabled:cursor-not-allowed right-2 sm:right-0"
+            aria-label="Suivant"
           >
-            <ChevronRight className="w-6 h-6" style={{ color: '#8CC53E' }} />
+            <ChevronRight className="w-4 h-4 sm:w-6 sm:h-6 text-green-600" />
           </button>
         </div>
 
         {/* Pagination Dots */}
-        <div className="flex justify-center gap-2 mt-8">
+        <div className="flex justify-center gap-2 mt-8 sm:mt-10 lg:mt-12">
           {Array.from({ length: maxIndex + 1 }).map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}
-              className="w-3 h-3 rounded-full transition-colors"
+              className={`rounded-full transition-all`}
               style={{
-                backgroundColor: index === currentIndex ? '#8CC53E' : '#d1d5db',
+                width: index === currentIndex ? "24px" : "8px",
+                height: "8px",
+                backgroundColor: index === currentIndex ? "#8CC53E" : "#d1d5db",
               }}
-              onMouseEnter={(e) => {
-                if (index !== currentIndex) {
-                  e.currentTarget.style.backgroundColor = '#9ca3af';
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (index !== currentIndex) {
-                  e.currentTarget.style.backgroundColor = '#d1d5db';
-                }
-              }}
-              aria-label={`Aller au groupe de témoignages ${index + 1}`}
             />
           ))}
         </div>
