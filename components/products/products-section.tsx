@@ -8,7 +8,6 @@ import { Volume2, VolumeX } from 'lucide-react';
 export default function ProductsSection() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isMuted, setIsMuted] = useState(true);
-  const [hoveredService, setHoveredService] = useState<number | null>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const router = useRouter();
 
@@ -120,42 +119,54 @@ export default function ProductsSection() {
                 display: none;
               }
             `}</style>
-            {services.map((service, index) => (
-              <div
-                key={index}
-                className="flex-shrink-0 relative rounded-xl transition-all cursor-pointer min-w-max overflow-hidden"
-                style={{
-                  backgroundColor: hoveredService === index ? 'transparent' : 'rgba(140, 197, 62, 0.2)',
-                  padding: hoveredService === index ? '0' : '1rem 1.5rem',
-                  minHeight: hoveredService === index ? '200px' : 'auto',
-                  minWidth: hoveredService === index ? '300px' : 'auto',
-                }}
-                onMouseEnter={() => setHoveredService(index)}
-                onMouseLeave={() => setHoveredService(null)}
-                onClick={() => setHoveredService(hoveredService === index ? null : index)}
-              >
-                {hoveredService === index ? (
-                  <div className="relative w-full h-full">
-                    <Image
-                      src={service.image || "/placeholder.svg"}
-                      alt={service.title}
-                      fill
-                      className="object-cover rounded-xl"
-                    />
-                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center rounded-xl">
-                      <span className="font-medium text-center px-4" style={{ color: '#FFFFFF' }}>
+            {services.map((service, index) => {
+              // Alterner entre image (pair) et texte (impair)
+              const isImageCard = index % 2 === 0;
+              
+              return (
+                <div
+                  key={index}
+                  className="flex-shrink-0 relative overflow-hidden"
+                  style={{
+                    borderRadius: '9999px', // rounded-full pour coins très arrondis
+                    minWidth: isImageCard ? '300px' : '200px',
+                    width: isImageCard ? '300px' : '200px',
+                    height: '200px',
+                  }}
+                >
+                  {isImageCard ? (
+                    // Carte image
+                    <div className="relative w-full h-full">
+                      <Image
+                        src={service.image || "/placeholder.svg"}
+                        alt={service.title}
+                        fill
+                        className="object-cover"
+                        style={{ borderRadius: '9999px' }}
+                      />
+                    </div>
+                  ) : (
+                    // Carte texte avec fond olive-green
+                    <div 
+                      className="w-full h-full flex items-center justify-center px-6"
+                      style={{ 
+                        backgroundColor: '#8CC53E', // olive-green
+                        borderRadius: '9999px',
+                      }}
+                    >
+                      <span 
+                        className="font-medium text-center text-white whitespace-nowrap"
+                        style={{ 
+                          fontFamily: 'sans-serif',
+                        }}
+                      >
                         {service.title}
                       </span>
                     </div>
-                  </div>
-                ) : (
-                  <>
-                    {/* <span className="text-xl mr-2">{service.icon}</span> */}
-                    <span className="font-medium" style={{ color: '#000000' }}>{service.title}</span>
-                  </>
-                )}
-              </div>
-            ))}
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

@@ -4,9 +4,7 @@ import BenefitsSection from "@/components/benefits/benefits-section"
 import BlogSection from "@/components/blog/blog-section"
 import Footer from "@/components/footer"
 import HeroSection from "@/components/hero-section"
-import Header from "@/components/hero-section"
 import Navbar from "@/components/navbar"
-import NewHeroSection from "@/components/new-hero-section/new-hero-section"
 import ProductsSection from "@/components/products/products-section"
 import TestimonialsSection from "@/components/testimonials/testimonials-section"
 import TrustedSolutionsSection from "@/components/trusted-solutions/trusted-solutions-section"
@@ -20,7 +18,7 @@ export default function Home() {
       {/* <Header /> */}
       <Navbar />
       {/* <HeroSection /> */}
-      <NewHeroSection />
+      <HeroSection />
       <ProductsSection />
       <BenefitsSection />
       <AboutSection />

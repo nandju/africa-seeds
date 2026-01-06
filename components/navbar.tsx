@@ -8,32 +8,32 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 const menuItems = {
   "À Propos": [
-    { title: "Qui sommes-nous", subtitle: "Découvrez notre histoire", icon: Users },
-    { title: "Notre mission", subtitle: "Notre engagement", icon: Target },
-    { title: "Notre vision", subtitle: "L'avenir de l'agriculture", icon: Sprout },
-    { title: "Notre équipe", subtitle: "Les experts derrière le projet", icon: Users },
-    { title: "Partenariats", subtitle: "Nos collaborations", icon: Briefcase }
+    { title: "Qui sommes-nous", subtitle: "Découvrez notre histoire", icon: Users, href: "/a-propos/qui-sommes-nous" },
+    { title: "Notre mission", subtitle: "Notre engagement", icon: Target, href: "/a-propos/notre-mission" },
+    { title: "Notre vision", subtitle: "L'avenir de l'agriculture", icon: Sprout, href: "/a-propos/notre-vision" },
+    { title: "Notre équipe", subtitle: "Les experts derrière le projet", icon: Users, href: "/a-propos/notre-equipe" },
+    { title: "Partenariats", subtitle: "Nos collaborations", icon: Briefcase, href: "/a-propos/partenariats" }
   ],
   "Notre Impact": [
-    { title: "Impact agricole", subtitle: "Transformations mesurables", icon: Leaf },
-    { title: "Sécurité alimentaire", subtitle: "Pour une meilleure nutrition", icon: Award },
-    { title: "Innovation semencière", subtitle: "Semences du futur", icon: Lightbulb },
-    { title: "Résultats & statistiques", subtitle: "Chiffres et données", icon: BarChart3 },
-    { title: "Témoignages", subtitle: "Histoires de réussite", icon: MessageSquare }
+    { title: "Impact agricole", subtitle: "Transformations mesurables", icon: Leaf, href: "/impact/agricole" },
+    { title: "Sécurité alimentaire", subtitle: "Pour une meilleure nutrition", icon: Award, href: "/impact/securite-alimentaire" },
+    { title: "Innovation semencière", subtitle: "Semences du futur", icon: Lightbulb, href: "/impact/innovation-semenciere" },
+    { title: "Résultats & statistiques", subtitle: "Chiffres et données", icon: BarChart3, href: "/impact/resultats-statistiques" },
+    { title: "Témoignages", subtitle: "Histoires de réussite", icon: MessageSquare, href: "/impact/temoignages" }
   ],
   "Ressources": [
-    { title: "Publications", subtitle: "Nos travaux de recherche", icon: FileText },
-    { title: "Études & rapports", subtitle: "Analyses approfondies", icon: Book },
-    { title: "Guides agricoles", subtitle: "Conseils pratiques", icon: BookOpen },
-    { title: "Outils & formations", subtitle: "Ressources d'apprentissage", icon: Wrench },
-    { title: "Médias", subtitle: "Photos et vidéos", icon: Briefcase }
+    { title: "Publications", subtitle: "Nos travaux de recherche", icon: FileText, href: "/ressources/publications" },
+    { title: "Études & rapports", subtitle: "Analyses approfondies", icon: Book, href: "/ressources/etudes-rapports" },
+    { title: "Guides agricoles", subtitle: "Conseils pratiques", icon: BookOpen, href: "/ressources/guides-agricoles" },
+    { title: "Outils & formations", subtitle: "Ressources d'apprentissage", icon: Wrench, href: "/ressources/outils-formations" },
+    { title: "Médias", subtitle: "Photos et vidéos", icon: Briefcase, href: "/ressources/medias" }
   ],
   "Blog": [
-    { title: "Actualités", subtitle: "Dernières nouvelles", icon: Newspaper },
-    { title: "Articles", subtitle: "Analyses et perspectives", icon: FileText },
-    { title: "Histoires de terrain", subtitle: "Expériences du terrain", icon: Leaf },
-    { title: "Événements", subtitle: "Nos rencontres et webinaires", icon: Megaphone },
-    { title: "Communiqués", subtitle: "Annonces officielles", icon: Newspaper }
+    { title: "Actualités", subtitle: "Dernières nouvelles", icon: Newspaper, href: "/blog/actualites" },
+    { title: "Articles", subtitle: "Analyses et perspectives", icon: FileText, href: "/blog/articles" },
+    { title: "Histoires de terrain", subtitle: "Expériences du terrain", icon: Leaf, href: "/blog/histoires-de-terrain" },
+    { title: "Événements", subtitle: "Nos rencontres et webinaires", icon: Megaphone, href: "/blog/evenements" },
+    { title: "Communiqués", subtitle: "Annonces officielles", icon: Newspaper, href: "/blog/communiques" }
   ]
 };
 
@@ -104,7 +104,7 @@ export default function Navbar() {
               <div key={item} className="relative group">
                 {item === 'Accueil' ? (
                   <Link
-                    href="#"
+                    href="/"
                     className="transition-colors"
                     style={{ color: '#000000' }}
                     onMouseEnter={(e) =>
@@ -155,7 +155,7 @@ export default function Navbar() {
                                 transition={{ duration: 0.15, delay: 0.05 * idx }}
                               >
                                 <Link
-                                  href="#"
+                                  href={subitem.href || "#"}
                                   className="block px-4 py-3 transition-all group/item"
                                   onMouseEnter={(e) => {
                                     e.currentTarget.style.backgroundColor = '#f3f4f6';
@@ -261,7 +261,7 @@ export default function Navbar() {
             <div key={item}>
               {item === 'Accueil' ? (
                 <Link
-                  href="#"
+                  href="/"
                   className="text-base font-medium transition-colors block"
                   style={{ color: '#000000' }}
                   onMouseEnter={(e) =>
@@ -313,7 +313,7 @@ export default function Navbar() {
                             return (
                               <Link
                                 key={idx}
-                                href="#"
+                                href={subitem.href || "#"}
                                 className="block transition-colors"
                                 onClick={() => setIsDrawerOpen(false)}
                               >
