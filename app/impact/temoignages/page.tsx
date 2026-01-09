@@ -2,6 +2,7 @@
 
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
+import PageHero from "@/components/page-hero";
 import Image from "next/image";
 import { Quote, Play, Users, Building2, Briefcase } from "lucide-react";
 
@@ -47,20 +48,10 @@ export default function TemoignagesPage() {
     <main className="min-h-screen bg-white">
       <Navbar />
       
-      {/* Hero Section */}
-      <section className="relative w-full pt-32 pb-20 px-4 md:px-8 lg:px-16">
-        <div className="max-w-7xl mx-auto">
-          <span className="inline-block px-4 py-2 border rounded-full text-sm font-medium mb-6" style={{ borderColor: '#8CC53E', color: '#8CC53E' }}>
-            NOTRE IMPACT
-          </span>
-          <h1 className="text-5xl md:text-6xl font-bold mb-6" style={{ color: '#000000' }}>
-            Témoignages
-          </h1>
-          <p className="text-xl md:text-2xl leading-relaxed max-w-3xl" style={{ color: '#666666' }}>
-            Découvrez les histoires de réussite de ceux qui ont bénéficié de nos programmes et services.
-          </p>
-        </div>
-      </section>
+      <PageHero 
+        title="Témoignages"
+        description="Découvrez les histoires de réussite de ceux qui ont bénéficié de nos programmes et services."
+      />
 
       {/* Témoignages Agriculteurs */}
       <section className="w-full py-16 px-4 md:px-8 lg:px-16">

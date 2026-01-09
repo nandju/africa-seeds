@@ -95,7 +95,7 @@ export default function HeroSection() {
           </div> */}
 
           {/* CTA Button */}
-          <button onClick={() => router.push('/coming-soon')} className="px-8 py-3 font-medium rounded-full transition-all flex items-center gap-2 text-base md:text-lg" style={{ backgroundColor: '#BA8E3B', color: '#FFFFFF' }} onMouseEnter={(e) => e.currentTarget.style.opacity = '0.9'} onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}>
+          <button onClick={() => router.push('/a-propos')} className="px-8 py-3 font-medium rounded-full transition-all flex items-center gap-2 text-base md:text-lg" style={{ backgroundColor: '#BA8E3B', color: '#FFFFFF' }} onMouseEnter={(e) => e.currentTarget.style.opacity = '0.9'} onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}>
             En savoir plus
             <ChevronRight size={20} />
           </button>

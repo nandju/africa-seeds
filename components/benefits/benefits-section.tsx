@@ -28,7 +28,7 @@ export default function BenefitsSection() {
       <div className="px-4 md:px-8 lg:px-16 max-w-7xl mx-auto">
         {/* Header Section */}
         <div className="flex flex-col items-center gap-6 mb-16">
-          <button onClick={() => router.push('/coming-soon')} 
+          <button onClick={() => router.push('/a-propos')} 
             className="px-6 py-2 border rounded-full text-sm font-medium transition-colors"
             style={{ borderColor: '#8CC53E', color: '#8CC53E' }}
             onMouseEnter={(e) => {
@@ -84,7 +84,7 @@ export default function BenefitsSection() {
                   <h3 className="text-2xl md:text-3xl font-semibold leading-tight text-balance">
                     {benefit.title}
                   </h3>
-                  <button onClick={() => router.push('/coming-soon')} 
+                  <button onClick={() => router.push('/a-propos')} 
                     className="w-fit px-5 py-2 border rounded-full text-sm font-medium transition-colors duration-200"
                     style={{ 
                       borderColor: '#FFFFFF',

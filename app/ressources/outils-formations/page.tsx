@@ -2,6 +2,7 @@
 
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
+import PageHero from "@/components/page-hero";
 import Image from "next/image";
 import { Wrench, GraduationCap, Video, Lock, ArrowRight } from "lucide-react";
 
@@ -61,20 +62,10 @@ export default function OutilsFormationsPage() {
     <main className="min-h-screen bg-white">
       <Navbar />
       
-      {/* Hero Section */}
-      <section className="relative w-full pt-32 pb-20 px-4 md:px-8 lg:px-16">
-        <div className="max-w-7xl mx-auto">
-          <span className="inline-block px-4 py-2 border rounded-full text-sm font-medium mb-6" style={{ borderColor: '#8CC53E', color: '#8CC53E' }}>
-            RESSOURCES
-          </span>
-          <h1 className="text-5xl md:text-6xl font-bold mb-6" style={{ color: '#000000' }}>
-            Outils & Formations
-          </h1>
-          <p className="text-xl md:text-2xl leading-relaxed max-w-3xl" style={{ color: '#666666' }}>
-            Accédez à nos modules de formation, outils numériques et webinaires pour renforcer vos compétences.
-          </p>
-        </div>
-      </section>
+      <PageHero 
+        title="Outils & Formations"
+        description="Accédez à nos modules de formation, outils numériques et webinaires pour renforcer vos compétences."
+      />
 
       {/* Modules de formation */}
       <section className="w-full py-16 px-4 md:px-8 lg:px-16">

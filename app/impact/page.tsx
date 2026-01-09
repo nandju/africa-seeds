@@ -2,6 +2,7 @@
 
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
+import PageHero from "@/components/page-hero";
 import Link from "next/link";
 import { Leaf, Award, Lightbulb, BarChart3, MessageSquare, ArrowRight } from "lucide-react";
 import Image from "next/image";
@@ -49,22 +50,10 @@ export default function ImpactPage() {
     <main className="min-h-screen bg-white">
       <Navbar />
       
-      {/* Hero Section */}
-      <section className="relative w-full pt-32 pb-20 px-4 md:px-8 lg:px-16">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-8">
-            <span className="inline-block px-4 py-2 border rounded-full text-sm font-medium mb-6" style={{ borderColor: '#8CC53E', color: '#8CC53E' }}>
-              NOTRE IMPACT
-            </span>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6" style={{ color: '#000000' }}>
-              Notre impact sur le terrain
-            </h1>
-            <p className="text-xl md:text-2xl leading-relaxed max-w-3xl" style={{ color: '#666666' }}>
-              Mesurons ensemble les transformations réelles que nous apportons à l'agriculture africaine et à la sécurité alimentaire.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHero 
+        title="Notre impact"
+        description="Mesurons ensemble les transformations réelles que nous apportons à l'agriculture africaine et à la sécurité alimentaire."
+      />
 
       {/* Sections Grid */}
       <section className="w-full py-16 px-4 md:px-8 lg:px-16">

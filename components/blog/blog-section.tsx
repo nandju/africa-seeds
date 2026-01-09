@@ -110,7 +110,7 @@ export default function BlogSection() {
                 </h3>
 
                 {/* Read More Button */}
-                <button onClick={() => router.push('/coming-soon')} 
+                <button onClick={() => router.push('/blog')} 
                   className="w-fit rounded-full border-2 px-6 py-2 text-sm font-medium transition-all duration-300"
                   style={{ 
                     borderColor: 'rgba(140, 197, 62, 0.5)',
@@ -137,7 +137,7 @@ export default function BlogSection() {
 
         {/* View All Blogs Button */}
         <div className="flex justify-center">
-          <button onClick={() => router.push('/coming-soon')} 
+          <button onClick={() => router.push('/blog')} 
             className="rounded-full px-8 py-3 text-base font-semibold transition-all duration-300"
             style={{ 
               backgroundColor: '#BA8E3B',

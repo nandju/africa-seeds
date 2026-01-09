@@ -2,6 +2,7 @@
 
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
+import PageHero from "@/components/page-hero";
 import Link from "next/link";
 import { Newspaper, FileText, Leaf, Megaphone, ArrowRight } from "lucide-react";
 import Image from "next/image";
@@ -49,22 +50,10 @@ export default function BlogPage() {
     <main className="min-h-screen bg-white">
       <Navbar />
       
-      {/* Hero Section */}
-      <section className="relative w-full pt-32 pb-20 px-4 md:px-8 lg:px-16">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-8">
-            <span className="inline-block px-4 py-2 border rounded-full text-sm font-medium mb-6" style={{ borderColor: '#8CC53E', color: '#8CC53E' }}>
-              BLOG
-            </span>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6" style={{ color: '#000000' }}>
-              Actualités & Articles
-            </h1>
-            <p className="text-xl md:text-2xl leading-relaxed max-w-3xl" style={{ color: '#666666' }}>
-              Restez informé des dernières actualités, analyses et histoires du secteur semencier africain.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHero 
+        title="Actualités & Articles"
+        description="Restez informé des dernières actualités, analyses et histoires du secteur semencier africain."
+      />
 
       {/* Sections Grid */}
       <section className="w-full py-16 px-4 md:px-8 lg:px-16">

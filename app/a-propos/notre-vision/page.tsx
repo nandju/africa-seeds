@@ -2,6 +2,7 @@
 
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
+import PageHero from "@/components/page-hero";
 import Image from "next/image";
 import { Target, Globe, TrendingUp } from "lucide-react";
 
@@ -28,17 +29,10 @@ export default function NotreVisionPage() {
     <main className="min-h-screen bg-white">
       <Navbar />
       
-      {/* Hero Section */}
-      <section className="relative w-full pt-32 pb-20 px-4 md:px-8 lg:px-16">
-        <div className="max-w-7xl mx-auto">
-          <span className="inline-block px-4 py-2 border rounded-full text-sm font-medium mb-6" style={{ borderColor: '#8CC53E', color: '#8CC53E' }}>
-            À PROPOS
-          </span>
-          <h1 className="text-5xl md:text-6xl font-bold mb-6" style={{ color: '#000000' }}>
-            Notre vision
-          </h1>
-        </div>
-      </section>
+      <PageHero 
+        title="Notre vision"
+        description="Construire un avenir où chaque agriculteur africain a accès aux semences de qualité pour une agriculture durable et prospère."
+      />
 
       {/* Vision à long terme */}
       <section className="w-full py-16 px-4 md:px-8 lg:px-16">

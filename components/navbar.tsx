@@ -203,14 +203,15 @@ export default function Navbar() {
           </div>
 
           {/* CTA Button - Desktop */}
-          <button
-            className="hidden lg:block px-6 py-2 rounded-full font-medium transition-all"
+          <Link
+            href="/contact"
+            className="hidden lg:block px-6 py-2 rounded-full font-medium transition-all text-center"
             style={{ backgroundColor: '#BA8E3B', color: '#FFFFFF' }}
             onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.9')}
             onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
           >
             Contactez-nous
-          </button>
+          </Link>
 
           {/* Mobile Menu Button */}
           <button
@@ -355,12 +356,13 @@ export default function Navbar() {
           ))}
 
           {/* CTA Button Mobile */}
-          <button
-            className="w-full mt-6 px-6 py-3 rounded-full font-medium transition-all"
+          <Link
+            href="/contact"
+            className="w-full mt-6 px-6 py-3 rounded-full font-medium transition-all text-center block"
             style={{ backgroundColor: '#BA8E3B', color: '#FFFFFF' }}
           >
             Contactez-nous
-          </button>
+          </Link>
         </div>
       </div>
     </>
