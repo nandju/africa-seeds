@@ -5,43 +5,57 @@ import Link from 'next/link';
 import { Menu, X, ChevronDown, Users, Leaf, BarChart3, Book, Newspaper, Target, Sprout, TrendingUp, Lightbulb, Award, MessageSquare, FileText, BookOpen, Wrench, Briefcase, Megaphone } from 'lucide-react';
 import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
+import LanguageSelector from './language-selector';
+import { usePathname } from 'next/navigation';
 
 const menuItems = {
   "À Propos": [
-    { title: "Qui sommes-nous", subtitle: "Découvrez notre histoire", icon: Users, href: "/a-propos/qui-sommes-nous" },
-    { title: "Notre mission", subtitle: "Notre engagement", icon: Target, href: "/a-propos/notre-mission" },
-    { title: "Notre vision", subtitle: "L'avenir de l'agriculture", icon: Sprout, href: "/a-propos/notre-vision" },
-    { title: "Notre équipe", subtitle: "Les experts derrière le projet", icon: Users, href: "/a-propos/notre-equipe" },
-    { title: "Partenariats", subtitle: "Nos collaborations", icon: Briefcase, href: "/a-propos/partenariats" }
+    { title: "Vision", subtitle: "Vision continentale", icon: Target, href: "/a-propos/vision" },
+    { title: "Directeur Exécutif", subtitle: "Message du leadership", icon: Users, href: "/a-propos/directeur-executif" },
+    { title: "États membres", subtitle: "Légitimité panafricaine", icon: Briefcase, href: "/a-propos/etats-membres" },
+    { title: "Conseil d'administration", subtitle: "Gouvernance", icon: Users, href: "/a-propos/conseil-administration" }
   ],
-  "Notre Impact": [
-    { title: "Impact agricole", subtitle: "Transformations mesurables", icon: Leaf, href: "/impact/agricole" },
-    { title: "Sécurité alimentaire", subtitle: "Pour une meilleure nutrition", icon: Award, href: "/impact/securite-alimentaire" },
-    { title: "Innovation semencière", subtitle: "Semences du futur", icon: Lightbulb, href: "/impact/innovation-semenciere" },
-    { title: "Résultats & statistiques", subtitle: "Chiffres et données", icon: BarChart3, href: "/impact/resultats-statistiques" },
-    { title: "Témoignages", subtitle: "Histoires de réussite", icon: MessageSquare, href: "/impact/temoignages" }
+  "Notre Approche": [
+    { title: "Développement inclusif", subtitle: "Approche inclusive", icon: Users, href: "/notre-approche/developpement-inclusif" },
+    { title: "Stratégie", subtitle: "Stratégie continentale", icon: Target, href: "/notre-approche/strategie" },
+    { title: "Programme ASBP", subtitle: "Mandat Union Africaine", icon: Sprout, href: "/notre-approche/programme-asbp" },
+    { title: "CAADP", subtitle: "Politiques agricoles", icon: Leaf, href: "/notre-approche/caadp" },
+    { title: "Partenariats", subtitle: "Réseau institutionnel", icon: Briefcase, href: "/notre-approche/partenariats" }
+  ],
+  "Semences": [
+    { title: "Genre", subtitle: "Inclusion des femmes", icon: Users, href: "/semences/genre" },
+    { title: "Jeunesse", subtitle: "Valorisation des jeunes", icon: TrendingUp, href: "/semences/jeunesse" },
+    { title: "Cultures sous-utilisées", subtitle: "Biodiversité agricole", icon: Leaf, href: "/semences/cultures-sous-utilisees" },
+    { title: "Biodiversité & durabilité", subtitle: "Protection génétique", icon: Sprout, href: "/semences/biodiversite-durabilite" },
+    { title: "Transformation agricole", subtitle: "Productivité & développement", icon: Leaf, href: "/semences/transformation-agricole" },
+    { title: "Systèmes semenciers paysans", subtitle: "Systèmes locaux", icon: Users, href: "/semences/systemes-paysans" },
+    { title: "Petites entreprises", subtitle: "Soutien aux PME", icon: Briefcase, href: "/semences/petites-entreprises" }
   ],
   "Ressources": [
-    { title: "Publications", subtitle: "Nos travaux de recherche", icon: FileText, href: "/ressources/publications" },
-    { title: "Études & rapports", subtitle: "Analyses approfondies", icon: Book, href: "/ressources/etudes-rapports" },
-    { title: "Guides agricoles", subtitle: "Conseils pratiques", icon: BookOpen, href: "/ressources/guides-agricoles" },
-    { title: "Outils & formations", subtitle: "Ressources d'apprentissage", icon: Wrench, href: "/ressources/outils-formations" },
-    { title: "Médias", subtitle: "Photos et vidéos", icon: Briefcase, href: "/ressources/medias" }
-  ],
-  "Blog": [
-    { title: "Actualités", subtitle: "Dernières nouvelles", icon: Newspaper, href: "/blog/actualites" },
-    { title: "Articles", subtitle: "Analyses et perspectives", icon: FileText, href: "/blog/articles" },
-    { title: "Histoires de terrain", subtitle: "Expériences du terrain", icon: Leaf, href: "/blog/histoires-de-terrain" },
-    { title: "Événements", subtitle: "Nos rencontres et webinaires", icon: Megaphone, href: "/blog/evenements" },
-    { title: "Communiqués", subtitle: "Annonces officielles", icon: Newspaper, href: "/blog/communiques" }
+    { title: "Manuel de formation", subtitle: "Formation semencière", icon: BookOpen, href: "/ressources/manuel-formation" },
+    { title: "Publications", subtitle: "Études officielles", icon: FileText, href: "/ressources/publications" },
+    { title: "Portail de connaissances", subtitle: "Base documentaire", icon: Book, href: "/ressources/portail-connaissances" },
+    { title: "Cartographie des acteurs", subtitle: "Écosystème semencier", icon: BarChart3, href: "/ressources/cartographie-acteurs" },
+    { title: "Répertoire d'experts", subtitle: "Spécialistes du secteur", icon: Users, href: "/ressources/repertoire-experts" }
   ]
 };
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
+
+  // Extraire la locale actuelle du pathname
+  const getCurrentLocale = (): string => {
+    const segments = pathname.split('/').filter(Boolean);
+    const firstSegment = segments[0];
+    const locales = ['fr', 'en', 'es', 'de'];
+    return locales.includes(firstSegment) ? firstSegment : 'fr';
+  };
+
+  const locale = getCurrentLocale();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -68,7 +82,7 @@ export default function Navbar() {
     };
   }, [openDropdown]);
 
-  const navItems = ['Accueil', 'À Propos', 'Notre Impact', 'Ressources', 'Blog'];
+  const navItems = ['Accueil', 'À Propos', 'Notre Approche', 'Semences', 'Ressources', 'Actualités', 'Contact'];
 
   return (
     <>
@@ -87,7 +101,7 @@ export default function Navbar() {
 
           <div className="max-w-7xl mx-auto h-full px-4 md:px-8 flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center flex-shrink-0">
+          <Link href={`/${locale}`} className="flex items-center flex-shrink-0">
             <Image
               src="/assets/images/logo-africaseeds.png"
               alt="AfricaSeeds Logo"
@@ -102,9 +116,9 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center gap-8" ref={dropdownRef}>
             {navItems.map((item) => (
               <div key={item} className="relative group">
-                {item === 'Accueil' ? (
+                {item === 'Accueil' || item === 'Actualités' || item === 'Contact' ? (
                   <Link
-                    href="/"
+                    href={item === 'Accueil' ? `/${locale}` : `/${locale}/${item === 'Actualités' ? 'actualites' : 'contact'}`}
                     className="transition-colors"
                     style={{ color: '#000000' }}
                     onMouseEnter={(e) =>
@@ -145,7 +159,7 @@ export default function Navbar() {
                           onMouseEnter={() => setOpenDropdown(item)}
                           onMouseLeave={() => setOpenDropdown(null)}
                         >
-                          {menuItems[item as keyof typeof menuItems].map((subitem, idx) => {
+                          {menuItems[item as keyof typeof menuItems]?.map((subitem, idx) => {
                             const IconComponent = subitem.icon;
                             return (
                               <motion.div
@@ -155,7 +169,7 @@ export default function Navbar() {
                                 transition={{ duration: 0.15, delay: 0.05 * idx }}
                               >
                                 <Link
-                                  href={subitem.href || "#"}
+                                  href={`/${locale}${subitem.href || "#"}`}
                                   className="block px-4 py-3 transition-all group/item"
                                   onMouseEnter={(e) => {
                                     e.currentTarget.style.backgroundColor = '#f3f4f6';
@@ -202,16 +216,10 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* CTA Button - Desktop */}
-          <Link
-            href="/contact"
-            className="hidden lg:block px-6 py-2 rounded-full font-medium transition-all text-center"
-            style={{ backgroundColor: '#BA8E3B', color: '#FFFFFF' }}
-            onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.9')}
-            onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
-          >
-            Contactez-nous
-          </Link>
+          {/* Language Selector - Desktop */}
+          <div className="hidden lg:flex items-center gap-4">
+            <LanguageSelector />
+          </div>
 
           {/* Mobile Menu Button */}
           <button
@@ -260,9 +268,9 @@ export default function Navbar() {
         <div className="flex flex-col gap-4">
           {navItems.map((item) => (
             <div key={item}>
-              {item === 'Accueil' ? (
+              {item === 'Accueil' || item === 'Actualités' || item === 'Contact' ? (
                 <Link
-                  href="/"
+                  href={item === 'Accueil' ? `/${locale}` : `/${locale}/${item === 'Actualités' ? 'actualites' : 'contact'}`}
                   className="text-base font-medium transition-colors block"
                   style={{ color: '#000000' }}
                   onMouseEnter={(e) =>
@@ -309,12 +317,12 @@ export default function Navbar() {
                         className="overflow-hidden"
                       >
                         <div className="pl-4 mt-2 space-y-3">
-                          {menuItems[item as keyof typeof menuItems].map((subitem, idx) => {
+                          {menuItems[item as keyof typeof menuItems]?.map((subitem, idx) => {
                             const IconComponent = subitem.icon;
                             return (
                               <Link
                                 key={idx}
-                                href={subitem.href || "#"}
+                                href={`/${locale}${subitem.href || "#"}`}
                                 className="block transition-colors"
                                 onClick={() => setIsDrawerOpen(false)}
                               >
@@ -355,14 +363,6 @@ export default function Navbar() {
             </div>
           ))}
 
-          {/* CTA Button Mobile */}
-          <Link
-            href="/contact"
-            className="w-full mt-6 px-6 py-3 rounded-full font-medium transition-all text-center block"
-            style={{ backgroundColor: '#BA8E3B', color: '#FFFFFF' }}
-          >
-            Contactez-nous
-          </Link>
         </div>
       </div>
     </>

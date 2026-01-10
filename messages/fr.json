@@ -1,0 +1,59 @@
+{
+  "common": {
+    "home": "Accueil",
+    "about": "À Propos",
+    "contact": "Contactez-nous",
+    "blog": "Blog",
+    "resources": "Ressources",
+    "impact": "Notre Impact",
+    "readMore": "En savoir plus",
+    "learnMore": "Lire la suite",
+    "viewAll": "Voir tous",
+    "send": "Envoyer",
+    "sendMessage": "Envoyer le message",
+    "loading": "Chargement en cours",
+    "subscribe": "S'abonner",
+    "email": "Email",
+    "name": "Nom",
+    "subject": "Sujet",
+    "message": "Message"
+  },
+  "nav": {
+    "home": "Accueil",
+    "about": "À Propos",
+    "impact": "Notre Impact",
+    "resources": "Ressources",
+    "blog": "Blog",
+    "contact": "Contactez-nous"
+  },
+  "about": {
+    "title": "À propos",
+    "subtitle": "Une plateforme panafricaine dédiée au développement, à la valorisation et à l'accès aux semences de qualité pour transformer l'agriculture africaine.",
+    "whoWeAre": "Qui sommes-nous",
+    "mission": "Notre mission",
+    "vision": "Notre vision",
+    "team": "Notre équipe",
+    "partnerships": "Partenariats"
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "subtitle": "Nous sommes là pour répondre à vos questions et vous accompagner dans votre parcours avec AfricaSeeds.",
+    "connectTitle": "Connectez-vous avec notre équipe",
+    "formTitle": "Entrez en contact avec nous",
+    "contactDetails": "Détails de contact",
+    "address": "Adresse",
+    "phone": "Téléphone",
+    "availability": "Disponibilité",
+    "socialMedia": "Réseaux sociaux",
+    "faqTitle": "Vos questions fréquentes répondues avec des FAQ supplémentaires",
+    "yourName": "Votre nom",
+    "yourEmail": "Votre email",
+    "submitMessage": "Soumettez votre demande de message",
+    "sending": "Envoi en cours...",
+    "sent": "Message envoyé !"
+  },
+  "hero": {
+    "title": "Renforcer le secteur semencier africain",
+    "description": "Nous nous engageons à créer un système semencier durable, intégré et efficace pour soutenir la sécurité alimentaire, la transformation agricole et l'accès des agriculteurs à des semences de qualité à travers l'Afrique."
+  }
+}

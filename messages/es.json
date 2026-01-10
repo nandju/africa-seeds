@@ -1,0 +1,59 @@
+{
+  "common": {
+    "home": "Inicio",
+    "about": "Acerca de",
+    "contact": "Contáctenos",
+    "blog": "Blog",
+    "resources": "Recursos",
+    "impact": "Nuestro Impacto",
+    "readMore": "Leer más",
+    "learnMore": "Saber más",
+    "viewAll": "Ver todo",
+    "send": "Enviar",
+    "sendMessage": "Enviar mensaje",
+    "loading": "Cargando...",
+    "subscribe": "Suscribirse",
+    "email": "Correo electrónico",
+    "name": "Nombre",
+    "subject": "Asunto",
+    "message": "Mensaje"
+  },
+  "nav": {
+    "home": "Inicio",
+    "about": "Acerca de",
+    "impact": "Nuestro Impacto",
+    "resources": "Recursos",
+    "blog": "Blog",
+    "contact": "Contáctenos"
+  },
+  "about": {
+    "title": "Acerca de",
+    "subtitle": "Una plataforma panafricana dedicada al desarrollo, valorización y acceso a semillas de calidad para transformar la agricultura africana.",
+    "whoWeAre": "Quiénes Somos",
+    "mission": "Nuestra Misión",
+    "vision": "Nuestra Visión",
+    "team": "Nuestro Equipo",
+    "partnerships": "Asociaciones"
+  },
+  "contact": {
+    "title": "Contáctenos",
+    "subtitle": "Estamos aquí para responder sus preguntas y apoyarlo en su viaje con AfricaSeeds.",
+    "connectTitle": "Conéctese con Nuestro Equipo",
+    "formTitle": "Póngase en Contacto con Nosotros",
+    "contactDetails": "Detalles de Contacto",
+    "address": "Dirección",
+    "phone": "Teléfono",
+    "availability": "Disponibilidad",
+    "socialMedia": "Redes Sociales",
+    "faqTitle": "Sus Consultas Comunes Respondidas con Preguntas Frecuentes Adicionales",
+    "yourName": "Su Nombre",
+    "yourEmail": "Su Correo Electrónico",
+    "submitMessage": "Envíe su solicitud de mensaje",
+    "sending": "Enviando...",
+    "sent": "¡Mensaje Enviado!"
+  },
+  "hero": {
+    "title": "Fortalecer el Sector de Semillas Africano",
+    "description": "Nos comprometemos a crear un sistema de semillas sostenible, integrado y eficaz para apoyar la seguridad alimentaria, la transformación agrícola y el acceso de los agricultores a semillas de calidad en toda África."
+  }
+}

@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { ChevronRight } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function HeroSection() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -42,22 +43,28 @@ export default function HeroSection() {
     <section className="relative w-full h-screen mt-20 md:mt-0 overflow-hidden" style={{ background: 'linear-gradient(to bottom, #f3f4f6, #e5e7eb)' }}>
       {/* Image Carousel */}
       <div className="absolute inset-0">
-        {heroImages.map((image, index) => (
-          <div
-            key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 ${
-              index === currentImageIndex ? 'opacity-100' : 'opacity-0'
-            }`}
-          >
-            <Image
-              src={image.url || "/placeholder.svg"}
-              alt={image.alt}
-              fill
-              className="object-cover"
-              priority={index === 0}
-            />
-          </div>
-        ))}
+        <AnimatePresence mode="wait">
+          {heroImages.map((image, index) => (
+            index === currentImageIndex && (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 1.1 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 1, ease: 'easeInOut' }}
+                className="absolute inset-0"
+              >
+                <Image
+                  src={image.url || "/placeholder.svg"}
+                  alt={image.alt}
+                  fill
+                  className="object-cover"
+                  priority={index === 0}
+                />
+              </motion.div>
+            )
+          ))}
+        </AnimatePresence>
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/40"></div>
       </div>
@@ -66,17 +73,35 @@ export default function HeroSection() {
       <div className="relative z-10 h-full flex flex-col items-start justify-center px-4 md:px-12 lg:px-20 py-20">
         <div className="max-w-2xl">
           {/* Main Headline */}
-           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight block lg:hidden" style={{ color: '#BA8E3B' }}>
+          <motion.h1 
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight block lg:hidden" 
+            style={{ color: '#BA8E3B' }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             AfricaSeeds
-          </h1> 
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-6 md:mb-8 leading-tight" style={{ color: '#FFFFFF' }}>
+          </motion.h1> 
+          <motion.h2 
+            className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-6 md:mb-8 leading-tight" 
+            style={{ color: '#FFFFFF' }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
             Renforcer le secteur semencier africain
-          </h2>
+          </motion.h2>
 
           {/* Description */}
-          <p className="text-base md:text-lg mb-8 md:mb-10 leading-relaxed max-w-xl" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
+          <motion.p 
+            className="text-base md:text-lg mb-8 md:mb-10 leading-relaxed max-w-xl" 
+            style={{ color: 'rgba(255, 255, 255, 0.9)' }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
             Nous nous engageons à créer un système semencier durable, intégré et efficace pour soutenir la sécurité alimentaire, la transformation agricole et l'accès des agriculteurs à des semences de qualité à travers l'Afrique.
-          </p>
+          </motion.p>
 
           {/* Key Stats */}
           {/* <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 mb-8 md:mb-12">
@@ -95,10 +120,21 @@ export default function HeroSection() {
           </div> */}
 
           {/* CTA Button */}
-          <button onClick={() => router.push('/a-propos')} className="px-8 py-3 font-medium rounded-full transition-all flex items-center gap-2 text-base md:text-lg" style={{ backgroundColor: '#BA8E3B', color: '#FFFFFF' }} onMouseEnter={(e) => e.currentTarget.style.opacity = '0.9'} onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}>
+          <motion.button 
+            onClick={() => router.push('/a-propos')} 
+            className="px-8 py-3 font-medium rounded-full transition-all flex items-center gap-2 text-base md:text-lg" 
+            style={{ backgroundColor: '#BA8E3B', color: '#FFFFFF' }} 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onMouseEnter={(e) => e.currentTarget.style.opacity = '0.9'} 
+            onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
+          >
             En savoir plus
             <ChevronRight size={20} />
-          </button>
+          </motion.button>
         </div>
       </div>
 

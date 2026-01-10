@@ -1,0 +1,59 @@
+{
+  "common": {
+    "home": "Startseite",
+    "about": "Über uns",
+    "contact": "Kontaktieren Sie uns",
+    "blog": "Blog",
+    "resources": "Ressourcen",
+    "impact": "Unsere Wirkung",
+    "readMore": "Mehr lesen",
+    "learnMore": "Mehr erfahren",
+    "viewAll": "Alle anzeigen",
+    "send": "Senden",
+    "sendMessage": "Nachricht senden",
+    "loading": "Wird geladen...",
+    "subscribe": "Abonnieren",
+    "email": "E-Mail",
+    "name": "Name",
+    "subject": "Betreff",
+    "message": "Nachricht"
+  },
+  "nav": {
+    "home": "Startseite",
+    "about": "Über uns",
+    "impact": "Unsere Wirkung",
+    "resources": "Ressourcen",
+    "blog": "Blog",
+    "contact": "Kontaktieren Sie uns"
+  },
+  "about": {
+    "title": "Über uns",
+    "subtitle": "Eine panafrikanische Plattform, die sich der Entwicklung, Aufwertung und dem Zugang zu qualitativ hochwertigem Saatgut widmet, um die afrikanische Landwirtschaft zu transformieren.",
+    "whoWeAre": "Wer Wir Sind",
+    "mission": "Unsere Mission",
+    "vision": "Unsere Vision",
+    "team": "Unser Team",
+    "partnerships": "Partnerschaften"
+  },
+  "contact": {
+    "title": "Kontaktieren Sie uns",
+    "subtitle": "Wir sind hier, um Ihre Fragen zu beantworten und Sie auf Ihrer Reise mit AfricaSeeds zu unterstützen.",
+    "connectTitle": "Verbinden Sie sich mit Unserem Team",
+    "formTitle": "Kontaktieren Sie uns",
+    "contactDetails": "Kontaktdaten",
+    "address": "Adresse",
+    "phone": "Telefon",
+    "availability": "Verfügbarkeit",
+    "socialMedia": "Soziale Medien",
+    "faqTitle": "Ihre Häufigen Fragen Beantwortet mit Zusätzlichen FAQs",
+    "yourName": "Ihr Name",
+    "yourEmail": "Ihre E-Mail",
+    "submitMessage": "Senden Sie Ihre Nachrichtenanfrage",
+    "sending": "Wird gesendet...",
+    "sent": "Nachricht Gesendet!"
+  },
+  "hero": {
+    "title": "Stärkung des Afrikanischen Saatgutsektors",
+    "description": "Wir verpflichten uns, ein nachhaltiges, integriertes und effektives Saatgutsystem zu schaffen, um die Ernährungssicherheit, die landwirtschaftliche Transformation und den Zugang der Landwirte zu qualitativ hochwertigem Saatgut in ganz Afrika zu unterstützen."
+  }
+}

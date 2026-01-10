@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import "./globals.css";
-import Footer from "@/components/footer";
-import Navbar from "@/components/navbar";
-import Loader from "@/components/loading/loader";
-
+import PageWrapper from "@/components/page-wrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,13 +16,13 @@ const geistMono = Geist_Mono({
 const poppins = Poppins({
   variable: "--poppins",
   subsets: ["latin"],
-  weight: ["100" , "200" , "300" , "400" , "500" , "600" , "700" , "800" , "900"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
   title: "AfricaSeeds - Renforcer le secteur semencier africain",
   description:
-    "AfricaSeeds s’engage à renforcer le secteur des semences en Afrique, en soutenant la sécurité alimentaire, la transformation agricole et l’accès des agriculteurs à des semences de qualité.",
+    "AfricaSeeds s'engage à renforcer le secteur des semences en Afrique, en soutenant la sécurité alimentaire, la transformation agricole et l'accès des agriculteurs à des semences de qualité.",
   generator: "v0.app",
   icons: {
     icon: [
@@ -46,21 +43,19 @@ export const metadata: Metadata = {
   },
 };
 
-
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="en">
+    <html lang="fr" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} antialiased`}>
-        
-        
-
-        <div className="font-poppins max-w-screen-2xl mx-auto">
-          {/* Loader */}  
-        <Loader />
-          {/* <Navbar /> */}
-          {children}
-          {/* <Footer /> */}
-        </div>
+        <PageWrapper>
+          <div className="font-poppins max-w-screen-2xl mx-auto">
+            {children}
+          </div>
+        </PageWrapper>
       </body>
     </html>
   );

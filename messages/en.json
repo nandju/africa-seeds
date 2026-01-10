@@ -1,0 +1,59 @@
+{
+  "common": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact Us",
+    "blog": "Blog",
+    "resources": "Resources",
+    "impact": "Our Impact",
+    "readMore": "Read More",
+    "learnMore": "Learn More",
+    "viewAll": "View All",
+    "send": "Send",
+    "sendMessage": "Send Message",
+    "loading": "Loading...",
+    "subscribe": "Subscribe",
+    "email": "Email",
+    "name": "Name",
+    "subject": "Subject",
+    "message": "Message"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "impact": "Our Impact",
+    "resources": "Resources",
+    "blog": "Blog",
+    "contact": "Contact Us"
+  },
+  "about": {
+    "title": "About",
+    "subtitle": "A pan-African platform dedicated to the development, valorization and access to quality seeds to transform African agriculture.",
+    "whoWeAre": "Who We Are",
+    "mission": "Our Mission",
+    "vision": "Our Vision",
+    "team": "Our Team",
+    "partnerships": "Partnerships"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "We are here to answer your questions and support you in your journey with AfricaSeeds.",
+    "connectTitle": "Connect with Our Team",
+    "formTitle": "Get in Touch with Us",
+    "contactDetails": "Contact Details",
+    "address": "Address",
+    "phone": "Phone",
+    "availability": "Availability",
+    "socialMedia": "Social Media",
+    "faqTitle": "Your Common Queries Answered with Additional FAQs",
+    "yourName": "Your Name",
+    "yourEmail": "Your Email",
+    "submitMessage": "Submit your message request",
+    "sending": "Sending...",
+    "sent": "Message Sent!"
+  },
+  "hero": {
+    "title": "Strengthening the African Seed Sector",
+    "description": "We are committed to creating a sustainable, integrated and effective seed system to support food security, agricultural transformation and farmers' access to quality seeds across Africa."
+  }
+}
